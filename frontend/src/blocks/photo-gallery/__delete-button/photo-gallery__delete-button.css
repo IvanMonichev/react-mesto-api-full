@@ -5,4 +5,7 @@
   z-index: 1;
   width: 18px;
   height: 19px;
+  border: none;
+  padding: 0;
+  background: transparent;
 }

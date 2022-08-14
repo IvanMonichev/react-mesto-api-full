@@ -102,9 +102,9 @@ export class Api {
 }
 
 const api = new Api({
-  url: 'https://nomoreparties.co/v1/cohort-40',
+  url: 'https://api.monichev.mesto.nomoredomains.sbs',
   headers: {
-    authorization: "dadcd802-4ad4-4dc6-a2f2-1b872af8377c",
+    'Accept': 'application/json',
     'Content-Type': 'application/json'
   }
 })

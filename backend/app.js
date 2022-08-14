@@ -10,9 +10,9 @@ const allowedCors = [
   'http://monichev.mesto.nomoredomains.sbs/',
   'https://api.monichev.mesto.nomoredomains.sbs/',
   'http://api.monichev.mesto.nomoredomains.sbs/',
+  'http://api.monichev.mesto.nomoredomains.sbs/users/me',
   'localhost:3000'
 ];
-
 
 
 const router = require('./routes');

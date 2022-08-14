@@ -39,8 +39,8 @@ function Card({card: cards, onCardClick, onCardDelete, onCardLike}) {
         <button onClick={handleLikeClick} className={cardLikeButtonClassName}></button>
         <p className="photo-gallery__like-counter">{cards.likes.length}</p>
       </div>
-      {isOwn && <a onClick={handleDeleteClick} className="photo-gallery__delete-button button-action"><img
-        src={trash} alt="Корзина удаления"/></a>}
+      {isOwn && <button onClick={handleDeleteClick} className="photo-gallery__delete-button button-action"><img
+        src={trash} alt="Корзина удаления"/></button>}
     </li>)
 }
 
