@@ -1,0 +1,13 @@
+.header__body {
+  display: flex;
+  justify-content: space-between;
+  flex: 1 1 auto;
+}
+
+@media screen and (max-width: 540px) {
+  .header__body {
+    order: 2;
+    padding-top: 24px;
+    box-sizing: border-box;
+  }
+}

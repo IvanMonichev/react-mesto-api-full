@@ -1,0 +1,18 @@
+.form-authorizations__input {
+  width: 100%;
+  border: none;
+  background: none;
+  outline: none;
+  border-bottom: 2px solid #cccccc;
+  box-sizing: border-box;
+  padding-bottom: 11px;
+  color: white;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.form-authorizations__input::placeholder {
+  color: #cccccc;
+  font-size: 14px;
+  line-height: 1.2;
+}

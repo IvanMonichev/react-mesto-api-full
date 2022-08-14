@@ -1,0 +1,14 @@
+.form-authorizations__input-body {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  margin-top: 50px;
+  min-height: 270px;
+}
+
+@media screen and (max-width: 450px){
+  .form-authorizations__input-body {
+    min-height: 227px;
+  }
+}

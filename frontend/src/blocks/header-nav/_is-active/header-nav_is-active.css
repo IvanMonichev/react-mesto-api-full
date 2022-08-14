@@ -1,0 +1,6 @@
+@media screen and (max-width: 540px) {
+  .header-nav_is-active {
+    margin: 0;
+  }
+}
+

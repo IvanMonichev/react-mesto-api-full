@@ -1,0 +1,9 @@
+.form-authorizations__inline-text {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 1.2;
+  column-gap: 4px;
+}

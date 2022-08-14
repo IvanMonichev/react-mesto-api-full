@@ -1,0 +1,12 @@
+.popup__container_no-form {
+  padding: 0;
+  width: 100%;
+  max-width: 430px;
+  min-height: 330px;
+}
+
+@media screen and (max-width: 470px) {
+  .popup__container_no-form {
+    width: calc(100% - 40px);
+  }
+}

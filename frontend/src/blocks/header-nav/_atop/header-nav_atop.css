@@ -1,0 +1,12 @@
+@media screen and (max-width: 540px) {
+  .header-nav_atop {
+    order: 1;
+    height: 100%;
+    border-bottom: 1px solid #545454;
+    min-height: 142px;
+    display: flex;
+    justify-content: center;
+    margin: -143px 0 0 0;
+    transition: margin-top .6s ease-in-out;
+  }
+}

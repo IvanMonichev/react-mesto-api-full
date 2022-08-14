@@ -1,0 +1,16 @@
+.profile__edit-button {
+  box-sizing: border-box;
+  background: url(../../../images/pancil.svg) #000000 no-repeat center;
+  background-size: 10px;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  border: 1px solid white;
+}
+
+@media screen and (max-width: 425px) {
+  .profile__edit-button {
+    width: 18px;
+    height: 18px;
+  }
+}

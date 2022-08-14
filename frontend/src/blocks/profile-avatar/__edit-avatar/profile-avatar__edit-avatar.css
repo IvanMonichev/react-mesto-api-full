@@ -1,0 +1,22 @@
+.profile-avatar__edit-avatar {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  border-radius: 50%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: none;
+  outline: none;
+  padding: 0;
+  background: url(../../../images/pancil.svg) no-repeat 50%;
+  background-size: 26px;
+  opacity: 0;
+  transition: .7s;
+}
+
+.profile-avatar__edit-avatar:hover {
+  cursor: pointer;
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.8);
+}
