@@ -26,8 +26,8 @@ const options = {
   credentials: true,
 };
 app.use(requestLogger);
-app.use(cors(options));
 app.use(router);
+app.use(cors(options));
 app.use(errors());
 app.use(errorLogger);
 app.use(serverError);
