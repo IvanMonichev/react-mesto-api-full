@@ -18,10 +18,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const options = {
   origin: [
-    'https://monichev.mesto.nomoredomains.sbs/',
-    'http://monichev.mesto.nomoredomains.sbs/',
-    'https://api.monichev.mesto.nomoredomains.sbs/',
-    'http://api.monichev.mesto.nomoredomains.sbs/',
+    'https://monichev.mesto.nomoredomains.sbs',
+    'http://monichev.mesto.nomoredomains.sbs',
+    'https://api.monichev.mesto.nomoredomains.sbs',
+    'http://api.monichev.mesto.nomoredomains.sbs',
     'http://localhost:3000'
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
