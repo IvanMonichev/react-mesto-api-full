@@ -19,6 +19,7 @@ const options = {
     'https://monichev.mesto.nomoredomains.sbs',
     'http://monichev.mesto.nomoredomains.sbs',
     'http://api.monichev.mesto.nomoredomains.sbs',
+    'https://api.monichev.mesto.nomoredomains.sbs',
     'http://localhost:3001'
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
