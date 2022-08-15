@@ -13,6 +13,12 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+mongoose.connect('mongodb://localhost:27017/mestodb', {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+});
 
 const options = {
   origin: [
@@ -22,16 +28,7 @@ const options = {
   ],
   credentials: true,
 };
-
 app.use(cors(options));
-
-mongoose.connect('mongodb://localhost:27017/mestodb', {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-});
-
 app.use(requestLogger);
 app.use(router);
 app.use(errors());
