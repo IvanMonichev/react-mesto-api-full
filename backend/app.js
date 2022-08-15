@@ -28,8 +28,8 @@ const options = {
   ],
   credentials: true,
 };
-app.use(cors(options));
 app.use(requestLogger);
+app.use(cors(options));
 app.use(router);
 app.use(errors());
 app.use(errorLogger);
