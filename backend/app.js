@@ -21,6 +21,7 @@ const options = {
     'https://api.monichev.mesto.nomoredomains.sbs',
     'http://api.monichev.mesto.nomoredomains.sbs',
     'https://api.monichev.mesto.nomoredomains.sbs/users/me',
+    'https://api.monichev.mesto.nomoredomains.sbs/cards',
     'http://localhost:3001'
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
