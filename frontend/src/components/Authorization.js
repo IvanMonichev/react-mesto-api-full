@@ -5,14 +5,10 @@ const Authorization = ({title, buttonText, children, onSubmit}) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  const hasInvalidInput = input => {
-    console.log(input.validationMessage);
-  }
 
   const handleChangeEmail = event => {
     setEmail(event.target.value);
-    console.log(event.target)
-    hasInvalidInput(event.target);
+    /*console.log(event.target)*/
   }
 
   const handleChangePassword = event => {
