@@ -18,18 +18,12 @@ const options = {
   origin: [
     'https://monichev.mesto.nomoredomains.sbs',
     'http://monichev.mesto.nomoredomains.sbs',
-    'http://api.monichev.mesto.nomoredomains.sbs',
-    'https://api.monichev.mesto.nomoredomains.sbs',
     'http://localhost:3001'
   ],
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
 };
 
-app.use('*', cors(options));
+app.use(cors(options));
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
