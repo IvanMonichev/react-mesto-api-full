@@ -6,8 +6,6 @@ const cors = require('cors');
 
 const { PORT = 3000 } = process.env;
 
-
-
 const router = require('./routes');
 const serverError = require('./middlewares/serverError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -22,7 +20,8 @@ const options = {
     'http://monichev.mesto.nomoredomains.sbs',
     'https://api.monichev.mesto.nomoredomains.sbs',
     'http://api.monichev.mesto.nomoredomains.sbs',
-    'http://localhost:3000'
+    'https://api.monichev.mesto.nomoredomains.sbs/users/me',
+    'http://localhost:3001'
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
