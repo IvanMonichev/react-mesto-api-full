@@ -4,7 +4,7 @@ const expressWinston = require('express-winston');
 // Логер запросов
 const requestLogger = expressWinston.logger({
   transports: [
-    new winston.transports.File({ filename: '../backend/logs/request.log' }),
+    new winston.transports.File({ filename: './logs/request.log' }),
   ],
   format: winston.format.json(),
 });
@@ -12,7 +12,7 @@ const requestLogger = expressWinston.logger({
 // Логгер ошибок
 const errorLogger = expressWinston.errorLogger({
   transports: [
-    new winston.transports.File({ filename: '../backend/logs/error.log' }),
+    new winston.transports.File({ filename: './logs/error.log' }),
   ],
   format: winston.format.json(),
 });
