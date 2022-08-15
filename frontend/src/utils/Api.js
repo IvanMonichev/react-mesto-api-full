@@ -104,6 +104,7 @@ export class Api {
 const api = new Api({
   url: 'https://api.monichev.mesto.nomoredomains.sbs',
   headers: {
+    'Accept': 'application/json',
     'Content-Type': 'application/json'
   }
 })
