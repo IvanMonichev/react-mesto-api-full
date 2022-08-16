@@ -41,7 +41,6 @@ function App() {
     const jwt = localStorage.getItem('access_token');
 
     if (jwt) {
-      console.log(jwt);
       getContent(jwt)
         .then((res) => {
           setEmail(res.email);

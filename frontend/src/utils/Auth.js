@@ -1,8 +1,7 @@
-//const BASE_URL = 'https://api.monichev.mesto.nomoredomains.sbs'
-const BASE_URL = 'http://localhost:3001'
+const BASE_URL = 'https://api.monichev.mesto.nomoredomains.sbs'
+
 
 const handleError = res => {
-  console.log(res.ok);
   if (res.ok) {
     return res.json();
   }
@@ -28,12 +27,12 @@ export const authorize = (email, password) => {
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem('access_token')}`,
     },
     body: JSON.stringify({email, password})
   })
     .then(handleError)
     .then(data => {
-      console.log(data);
       if (data) {
         localStorage.setItem('access_token', data.token)
         return data;
