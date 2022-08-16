@@ -38,7 +38,7 @@ const deleteCard = (request, response, next) => {
   Card.findById(cardId)
     .then((card) => {
       if (!card) {
-        throw new NotFoundError('Переданы некорректные данные для удаления карточки');
+        throw new NotFoundError('Карточки не существует');
       } else if (owner.toString() !== card.owner.toString()) {
         throw new ForbiddenError(`Пользователь с ID ${owner} не является владельцем данной карточки`);
       } else {
