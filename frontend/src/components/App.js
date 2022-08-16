@@ -33,7 +33,29 @@ function App() {
   const [email, setEmail] = React.useState('');
   const [successRegister, setSuccessResister] = React.useState(false);
   const [textNotification, setTextNotification] = React.useState('');
-  const history = useHistory()
+  const history = useHistory();
+
+  React.useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+
+    if (jwt) {
+      getContent(jwt)
+        .then((res) => {
+          setEmail(res.email)
+          setLoggedIn(true);
+          history.push('/');
+        })
+        .catch(error => {
+          if (error === 400) {
+            console.log('400 - токен не передан или передан не в том формате');
+          } else if (error === 401) {
+            console.log('401 - переданный токен некорректен');
+          } else {
+            console.log(`${error.status} – ${error.statusText}`);
+          }
+        })
+    }
+  }, [history]);
 
   React.useEffect(() => {
     if (loggedIn) {
@@ -128,7 +150,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(like => like._id === currentUser._id);
+    const isLiked = card.likes.some(like => like === currentUser._id);
 
     api.changeLikeCardStatus(card._id, !isLiked)
       .then(newCard => {
@@ -186,26 +208,7 @@ function App() {
     setLoggedIn(false);
   }
 
-  React.useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      getContent(jwt)
-        .then((res) => {
-          setEmail(res.data.email)
-          setLoggedIn(true);
-          history.push('/');
-        })
-        .catch(error => {
-          if (error === 400) {
-            console.log('400 - токен не передан или передан не в том формате');
-          } else if (error === 401) {
-            console.log('401 - переданный токен некорректен');
-          } else {
-            console.log(`${error.status} – ${error.statusText}`);
-          }
-        })
-    }
-  }, [history]);
+
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

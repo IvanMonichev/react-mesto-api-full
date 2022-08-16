@@ -149,7 +149,6 @@ const loginUser = (request, response, next) => {
           response.cookie('jwt', token, {
             maxAge: 1000 * 60 * 60 * 24 * 7,
             httpOnly: true,
-            sameSite: 'none',
           });
 
           return response.send({

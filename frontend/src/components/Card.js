@@ -7,14 +7,14 @@ function Card({card: cards, onCardClick, onCardDelete, onCardLike}) {
   const currentUser = React.useContext(CurrentUserContext);
 
   // Определяем, являемся ли мы владельцем текущей карточки.
-  const isOwn = cards.owner._id === currentUser._id;
+  const isOwn = cards.owner === currentUser._id;
 
   const handleDeleteClick = () => {
     onCardDelete(cards);
   }
 
   // Определяем, есть ли у карточки лайк, поставленный текущим пользователем.
-  const isLiked = cards.likes.some(like => like._id === currentUser._id);
+  const isLiked = cards.likes.some(like => like === currentUser._id);
 
   // Включаем стиль активного лайка, если лайкнули мы.
   const cardLikeButtonClassName = (

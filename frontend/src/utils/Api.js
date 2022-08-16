@@ -15,7 +15,7 @@ export class Api {
   getUserData() {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
-      headers: this._headers
+      headers: this._headers,
     })
       .then(this._errorHandle)
   }
@@ -35,7 +35,7 @@ export class Api {
   getCardsData() {
     return fetch(`${this._url}/cards`, {
       method: "GET",
-      headers: this._headers
+      headers: this._headers,
     })
       .then(this._errorHandle)
   }
@@ -102,10 +102,10 @@ export class Api {
 }
 
 const api = new Api({
-  url: 'https://api.monichev.mesto.nomoredomains.sbs',
+  url: 'http://localhost:3000',
   headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
   }
 })
 
