@@ -35,10 +35,13 @@ function App() {
   const [textNotification, setTextNotification] = React.useState('');
   const history = useHistory();
 
+
+
   React.useEffect(() => {
     const jwt = localStorage.getItem('jwt');
 
     if (jwt) {
+      console.log(jwt);
       getContent(jwt)
         .then((res) => {
           setEmail(res.email)
@@ -66,7 +69,7 @@ function App() {
         })
         .catch(err => console.log(err));
     }
-  }, [loggedIn])
+  }, [loggedIn]);
 
   const handleUpdateUser = ({name, about}) => {
     setIsLoading(true);

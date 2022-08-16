@@ -1,6 +1,7 @@
-const BASE_URL = 'https://api.monichev.mesto.nomoredomains.sbs';
+const BASE_URL = 'https://api.monichev.mesto.nomoredomains.sbs'
 
 const handleError = res => {
+  console.log(res.ok);
   if (res.ok) {
     return res.json();
   }
@@ -41,7 +42,7 @@ export const getContent = token => {
     method: "GET",
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${token}`,
     },
   })
     .then(handleError)
