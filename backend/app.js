@@ -2,8 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
-const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const { PORT = 3000 } = process.env;
 
 const router = require('./routes');
@@ -12,22 +12,25 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 
-app.use('*', cors());
-
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
 });
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS');
-  if (req.method === 'OPTIONS') {
-    res.send(200);
-  }
-  next();
-});
+const options = {
+  origin: [
+    'http://monichev.mesto.nomoredomains.sbs',
+    'https://monichev.mesto.nomoredomains.sbs',
+    'http://localhost:3001',
+  ],
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  credentials: false,
+
+}
+
+app.use(cors(options));
 
 app.use(requestLogger);
 app.use(bodyParser.json());
