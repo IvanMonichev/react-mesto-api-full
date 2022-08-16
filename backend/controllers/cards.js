@@ -71,7 +71,7 @@ const likeCard = (request, response, next) => {
   )
     .then((card) => {
       if (!card) {
-        throw new NotFoundError('Переданы некорректные данные для постановки лайк');
+        throw new NotFoundError('Карточки не существует');
       } else {
         response.send(card);
       }
