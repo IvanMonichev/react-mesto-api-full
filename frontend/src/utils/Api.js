@@ -102,10 +102,11 @@ export class Api {
 }
 
 const api = new Api({
-  url: 'https://api.monichev.mesto.nomoredomains.sbs',
+  url: 'http://localhost:3001',
   headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${localStorage.getItem('access_token')}`,
   }
 })
 

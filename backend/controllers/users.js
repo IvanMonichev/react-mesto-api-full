@@ -146,10 +146,6 @@ const loginUser = (request, response, next) => {
             throw new UnauthorizedError('Неверный E-Mail или пароль');
           }
           const token = getJwtToken(user._id);
-          response.cookie('jwt', token, {
-            maxAge: 1000 * 60 * 60 * 24 * 7,
-            httpOnly: true,
-          });
 
           return response.send({
             message: 'Аутентификация успешно выполнена',

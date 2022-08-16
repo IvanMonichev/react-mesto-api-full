@@ -38,13 +38,14 @@ function App() {
 
 
   React.useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
+    const jwt = localStorage.getItem('access_token');
 
     if (jwt) {
       console.log(jwt);
       getContent(jwt)
         .then((res) => {
-          setEmail(res.email)
+          setEmail(res.email);
+
           setLoggedIn(true);
           history.push('/');
         })
@@ -207,7 +208,7 @@ function App() {
   }
 
   const handleExit = () => {
-    localStorage.removeItem('jwt');
+    localStorage.removeItem('access_token');
     setLoggedIn(false);
   }
 

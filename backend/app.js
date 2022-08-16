@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const cors = require('cors');
-const cookieParser = require('cookie-parser');
 
 const { PORT = 3001 } = process.env;
 
@@ -13,8 +12,6 @@ const serverError = require('./middlewares/serverError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
-app.use(cookieParser());
-
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
@@ -27,11 +24,10 @@ const options = {
     'https://monichev.mesto.nomoredomains.sbs',
   ],
   allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
-  methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
+  methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
   preflightContinue: false,
   credentials: false,
-
-}
+};
 
 app.use(cors(options));
 
@@ -45,7 +41,6 @@ app.get('/crash-test', () => {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(router);
 app.use(errors());
 app.use(errorLogger);

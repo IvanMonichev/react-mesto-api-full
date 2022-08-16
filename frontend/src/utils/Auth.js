@@ -1,4 +1,5 @@
-const BASE_URL = 'https://api.monichev.mesto.nomoredomains.sbs'
+//const BASE_URL = 'https://api.monichev.mesto.nomoredomains.sbs'
+const BASE_URL = 'http://localhost:3001'
 
 const handleError = res => {
   console.log(res.ok);
@@ -13,7 +14,8 @@ export const register = (email, password) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      "Accept": "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({email, password})
   })
@@ -24,14 +26,16 @@ export const authorize = (email, password) => {
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      "Accept": "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({email, password})
   })
     .then(handleError)
     .then(data => {
-      if (data.token) {
-        localStorage.setItem('jwt', data.token)
+      console.log(data);
+      if (data) {
+        localStorage.setItem('access_token', data.token)
         return data;
       }
     })
@@ -41,8 +45,9 @@ export const getContent = token => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
     },
   })
     .then(handleError)
