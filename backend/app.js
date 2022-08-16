@@ -11,24 +11,27 @@ const serverError = require('./middlewares/serverError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('*', cors());
 
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
 });
 
-const options = {
-  origin: [
-    'https://monichev.mesto.nomoredomains.sbs',
-    'http://monichev.mesto.nomoredomains.sbs',
-    'http://localhost:3001'
-  ],
-  credentials: true,
-};
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS');
+  if (req.method === 'OPTIONS') {
+    res.send(200);
+  }
+  next();
+});
+
 app.use(requestLogger);
-app.use('*', cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(router);
 app.use(errors());
