@@ -18,9 +18,9 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 });
 
 const options = {
-  origin: "*",
+  origin: '*',
   allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
   preflightContinue: false,
   credentials: false,
 
