@@ -16,6 +16,7 @@ export class Api {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
       headers: this._headers,
+      credentials: 'include',
     })
       .then(this._errorHandle)
   }
@@ -24,6 +25,7 @@ export class Api {
     return fetch(`${this._url}/users/me`, {
       method: "PATCH",
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify({
         name: userInfo.name,
         about: userInfo.about
@@ -36,6 +38,7 @@ export class Api {
     return fetch(`${this._url}/cards`, {
       method: "GET",
       headers: this._headers,
+      credentials: 'include',
     })
       .then(this._errorHandle)
   }
@@ -44,6 +47,7 @@ export class Api {
     return fetch(`${this._url}/cards`, {
       method: "POST",
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify({
         name: card.name,
         link: card.link
@@ -55,6 +59,7 @@ export class Api {
   deleteCard(id) {
     return fetch(`${this._url}/cards/${id}`, {
       method: "DELETE",
+      credentials: 'include',
       headers: this._headers
       })
       .then(this._errorHandle)
@@ -63,6 +68,7 @@ export class Api {
   likeCard(id) {
     return fetch(`${this._url}/cards/${id}/likes`, {
       method: "PUT",
+      credentials: 'include',
       headers: this._headers
     })
       .then(this._errorHandle)
@@ -71,6 +77,7 @@ export class Api {
   dislikeCard(id) {
     return fetch(`${this._url}/cards/${id}/likes`, {
       method: "DELETE",
+      credentials: 'include',
       headers: this._headers
     })
       .then(this._errorHandle)
@@ -79,6 +86,7 @@ export class Api {
   editAvatar(link) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: "PATCH",
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         avatar: link.avatar
@@ -102,11 +110,10 @@ export class Api {
 }
 
 const api = new Api({
-  url: 'https://api.monichev.mesto.nomoredomains.sbs',
+  url: 'http://localhost:3001',
   headers: {
     "Accept": "application/json",
     "Content-Type": "application/json",
-    "Authorization": `Bearer ${localStorage.getItem('access_token')}`,
   }
 })
 

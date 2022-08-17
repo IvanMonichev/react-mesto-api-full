@@ -35,6 +35,39 @@ function App() {
   const [textNotification, setTextNotification] = React.useState('');
   const history = useHistory();
 
+  React.useEffect(() => {
+
+      getContent()
+        .then((res) => {
+          setEmail(res.email);
+          setLoggedIn(true);
+          history.push('/');
+        })
+        .catch(error => {
+          if (error === 400) {
+            console.log('400 - токен не передан или передан не в том формате');
+          } else if (error === 401) {
+            console.log('401 - переданный токен некорректен');
+          } else {
+            console.log(`${error.status} – ${error.statusText}`);
+          }
+        })
+  }, [history]);
+
+  React.useEffect(() => {
+    console.log('work');
+    if (loggedIn) {
+      console.log('2 work');
+      api.getAllData()
+        .then(([userData, cardsData]) => {
+          console.log('3 work');
+          setCurrentUser(userData);
+          setCards(cardsData);
+        })
+        .catch(err => console.log(err));
+    }
+  }, [loggedIn, history]);
+
   const handleUpdateUser = ({name, about}) => {
     setIsLoading(true);
     api.setUserInfo({name, about})
@@ -171,37 +204,7 @@ function App() {
       })
   };
 
-  React.useEffect(() => {
-    const jwt = localStorage.getItem('access_token');
 
-    if (jwt) {
-      getContent(jwt)
-        .then((res) => {
-          setEmail(res.email);
-          setLoggedIn(true);
-        })
-        .catch(error => {
-          if (error === 400) {
-            console.log('400 - токен не передан или передан не в том формате');
-          } else if (error === 401) {
-            console.log('401 - переданный токен некорректен');
-          } else {
-            console.log(`${error.status} – ${error.statusText}`);
-          }
-        })
-    }
-  }, [history]);
-
-  React.useEffect(() => {
-    if (loggedIn) {
-      api.getAllData()
-        .then(([userData, cardsData]) => {
-          setCurrentUser(userData);
-          setCards(cardsData);
-        })
-        .catch(err => console.log(err));
-    }
-  }, [loggedIn]);
 
   const handleExit = () => {
     localStorage.removeItem('access_token');
