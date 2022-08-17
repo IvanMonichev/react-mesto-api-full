@@ -163,7 +163,7 @@ const logout = (request, response, next) => {
     httpOnly: true,
     sameSite: true,
   }).send({
-    message: 'Выход из системы'
+    message: 'Выход из системы',
   })
     .catch(next);
 };

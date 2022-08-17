@@ -36,8 +36,7 @@ function App() {
   const history = useHistory();
 
   React.useEffect(() => {
-
-    api.getUserData()
+      api.getUserData()
         .then((res) => {
           setEmail(res.email);
           setLoggedIn(true);
