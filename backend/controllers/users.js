@@ -129,12 +129,9 @@ const getCurrentUser = (request, response, next) => {
 };
 
 const loginUser = (request, response, next) => {
-  const {
-    email,
-    password,
-  } = request.body;
+  const { email, password } = request.body;
 
-   User.findOne({ email }).select('+password')
+  User.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
         throw new UnauthorizedError('Такого пользователя не существует');

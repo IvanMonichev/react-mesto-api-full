@@ -21,7 +21,6 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 const options = {
   origin: [
     'http://localhost:3000',
@@ -43,7 +42,6 @@ app.get('/crash-test', () => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
-
 
 app.use(router);
 app.use(errors());
