@@ -134,7 +134,7 @@ const loginUser = (request, response, next) => {
     password,
   } = request.body;
 
-  User.findOne({ email }).select('+password')
+   User.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
         throw new UnauthorizedError('Такого пользователя не существует');

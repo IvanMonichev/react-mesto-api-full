@@ -14,7 +14,7 @@ import AddPlacePopup from "./AddPlacePopup";
 import DeleteCardPopup from "./DeleteCardPopup";
 import InfoTooltip from "./InfoTooltip";
 import ProtectedRoute from "./ProtectedRoute";
-import {authorize, getContent, register } from "../utils/Auth";
+import {authorize, getContent, register} from "../utils/Auth";
 import PageNotFound from "./PageNotFound";
 
 function App() {
@@ -34,42 +34,6 @@ function App() {
   const [successRegister, setSuccessResister] = React.useState(false);
   const [textNotification, setTextNotification] = React.useState('');
   const history = useHistory();
-
-
-
-  React.useEffect(() => {
-    const jwt = localStorage.getItem('access_token');
-
-    if (jwt) {
-      getContent(jwt)
-        .then((res) => {
-          setEmail(res.email);
-
-          setLoggedIn(true);
-          history.push('/');
-        })
-        .catch(error => {
-          if (error === 400) {
-            console.log('400 - токен не передан или передан не в том формате');
-          } else if (error === 401) {
-            console.log('401 - переданный токен некорректен');
-          } else {
-            console.log(`${error.status} – ${error.statusText}`);
-          }
-        })
-    }
-  }, [history]);
-
-  React.useEffect(() => {
-    if (loggedIn) {
-      api.getAllData()
-        .then(([userData, cardsData]) => {
-          setCurrentUser(userData);
-          setCards(cardsData);
-        })
-        .catch(err => console.log(err));
-    }
-  }, [loggedIn]);
 
   const handleUpdateUser = ({name, about}) => {
     setIsLoading(true);
@@ -103,7 +67,8 @@ function App() {
       .catch(err => console.log(err))
       .finally(() => {
         setAddPlacePopupOpen(false);
-        setIsLoading(false)});
+        setIsLoading(false)
+      });
   }
 
   function handleEditAvatarClick() {
@@ -166,7 +131,7 @@ function App() {
     setSuccessResister(boolean);
     if (boolean) {
       setTextNotification('Вы успешно зарегистрировались!');
-    } else  {
+    } else {
       setTextNotification('Что-то пошло не так! Попробуйте ещё раз.');
     }
     setInfoTooltipPopupOpen(true);
@@ -204,13 +169,44 @@ function App() {
           console.log(`${error.status} – ${error.statusText}`);
         }
       })
-  }
+  };
+
+  React.useEffect(() => {
+    const jwt = localStorage.getItem('access_token');
+
+    if (jwt) {
+      getContent(jwt)
+        .then((res) => {
+          setEmail(res.email);
+          setLoggedIn(true);
+        })
+        .catch(error => {
+          if (error === 400) {
+            console.log('400 - токен не передан или передан не в том формате');
+          } else if (error === 401) {
+            console.log('401 - переданный токен некорректен');
+          } else {
+            console.log(`${error.status} – ${error.statusText}`);
+          }
+        })
+    }
+  }, [history]);
+
+  React.useEffect(() => {
+    if (loggedIn) {
+      api.getAllData()
+        .then(([userData, cardsData]) => {
+          setCurrentUser(userData);
+          setCards(cardsData);
+        })
+        .catch(err => console.log(err));
+    }
+  }, [loggedIn]);
 
   const handleExit = () => {
     localStorage.removeItem('access_token');
     setLoggedIn(false);
   }
-
 
 
   return (
@@ -244,7 +240,7 @@ function App() {
           />
         </Route>
         <Route path="*">
-          <PageNotFound />
+          <PageNotFound/>
         </Route>
         <Route>
           {loggedIn ? <Redirect to="/"/> : <Redirect to="/sign-in"/>}

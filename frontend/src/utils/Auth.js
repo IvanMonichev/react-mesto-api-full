@@ -27,14 +27,13 @@ export const authorize = (email, password) => {
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${localStorage.getItem('access_token')}`,
     },
     body: JSON.stringify({email, password})
   })
     .then(handleError)
     .then(data => {
       if (data) {
-        localStorage.setItem('access_token', data.token)
+        localStorage.setItem('access_token', data.token);
         return data;
       }
     })
