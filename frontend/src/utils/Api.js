@@ -106,7 +106,6 @@ export class Api {
       return this.dislikeCard(id)
     }
   }
-
 }
 
 const api = new Api({

@@ -14,7 +14,7 @@ import AddPlacePopup from "./AddPlacePopup";
 import DeleteCardPopup from "./DeleteCardPopup";
 import InfoTooltip from "./InfoTooltip";
 import ProtectedRoute from "./ProtectedRoute";
-import {authorize, getContent, register} from "../utils/Auth";
+import {authorize, register, logout} from "../utils/Auth";
 import PageNotFound from "./PageNotFound";
 
 function App() {
@@ -37,11 +37,12 @@ function App() {
 
   React.useEffect(() => {
 
-      getContent()
+    api.getUserData()
         .then((res) => {
           setEmail(res.email);
           setLoggedIn(true);
           history.push('/');
+
         })
         .catch(error => {
           if (error === 400) {
@@ -49,7 +50,7 @@ function App() {
           } else if (error === 401) {
             console.log('401 - переданный токен некорректен');
           } else {
-            console.log(`${error.status} – ${error.statusText}`);
+            console.log(`${ error.status } – ${ error.statusText }`);
           }
         })
   }, [history]);
@@ -63,7 +64,7 @@ function App() {
         })
         .catch(err => console.log(err));
     }
-  }, [loggedIn, history]);
+  }, [loggedIn]);
 
   const handleUpdateUser = ({name, about}) => {
     setIsLoading(true);
@@ -204,7 +205,8 @@ function App() {
 
 
   const handleExit = () => {
-    localStorage.removeItem('access_token');
+    logout();
+    history.push('/')
     setLoggedIn(false);
   }
 

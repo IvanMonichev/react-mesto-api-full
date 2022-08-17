@@ -158,6 +158,16 @@ const loginUser = (request, response, next) => {
     .catch(next);
 };
 
+const logout = (request, response, next) => {
+  response.cookie('access_token', 'jwt.token.revoked', {
+    httpOnly: true,
+    sameSite: true,
+  }).send({
+    message: 'Выход из системы'
+  })
+    .catch(next);
+};
+
 module.exports = {
   getUsers,
   getUser,
@@ -165,5 +175,6 @@ module.exports = {
   updateUser,
   updateAvatar,
   loginUser,
+  logout,
   getCurrentUser,
 };
