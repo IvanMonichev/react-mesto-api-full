@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const cors = require('cors');
 
-const { PORT = 3001 } = process.env;
+const { PORT = 3000 } = process.env;
 
 const router = require('./routes');
 const serverError = require('./middlewares/serverError');
@@ -27,7 +27,7 @@ const options = {
     'http://monichev.mesto.nomoredomains.sbs',
     'https://monichev.mesto.nomoredomains.sbs',
   ],
-  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'origin'],
   methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
   preflightContinue: false,
   credentials: true,

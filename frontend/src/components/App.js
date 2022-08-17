@@ -55,12 +55,9 @@ function App() {
   }, [history]);
 
   React.useEffect(() => {
-    console.log('work');
     if (loggedIn) {
-      console.log('2 work');
       api.getAllData()
         .then(([userData, cardsData]) => {
-          console.log('3 work');
           setCurrentUser(userData);
           setCards(cardsData);
         })
