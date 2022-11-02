@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const cors = require('cors');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 4001 } = process.env;
 
 const router = require('./routes');
 const serverError = require('./middlewares/serverError');
@@ -24,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const options = {
   origin: [
     'http://localhost:3000',
+    'https://localhost:3000',
     'http://monichev.mesto.nomoredomains.sbs',
     'https://monichev.mesto.nomoredomains.sbs',
   ],

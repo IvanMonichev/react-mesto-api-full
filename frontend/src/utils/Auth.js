@@ -1,4 +1,4 @@
-const BASE_URL = 'https://api.monichev.mesto.nomoredomains.sbs'
+const BASE_URL = 'http://localhost:4001'
 
 
 const handleError = res => {
